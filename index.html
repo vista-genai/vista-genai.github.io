@@ -34,6 +34,22 @@
             overflow-x: hidden;
             position: relative;
         }
+        
+        /* Fixed tech background - clear and visible */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.99; /* 降低不透明度，确保内容可读 */
+            z-index: -1;
+            pointer-events: none;
+        }
 
         /* Right Side Navigation */
         .right-nav {
@@ -43,22 +59,26 @@
             transform: translateY(-50%);
             z-index: 1000;
             padding: 1.5rem;
-            background: var(--dark-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            min-width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            border-radius: 16px;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
         .nav-header {
             color: white;
             font-family: 'Roboto Slab', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            letter-spacing: 0.5px;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #64b5f6;
+            letter-spacing: 1px;
+            text-align: center;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -73,23 +93,25 @@
             text-decoration: none;
             font-weight: 400;
             font-size: 0.9rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 3px;
-            transition: all 0.2s ease;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             display: block;
-            border-left: 2px solid transparent;
+            border-left: 3px solid transparent;
+            margin-bottom: 0.3rem;
         }
 
         .nav-links a:hover {
             color: white;
-            border-left-color: var(--secondary);
-            background: rgba(255, 255, 255, 0.07);
+            border-left-color: #64b5f6;
+            background: rgba(100, 181, 246, 0.2);
+            transform: translateX(5px);
         }
 
         .nav-links a.active {
             color: white;
-            background: rgba(255, 255, 255, 0.1);
-            border-left-color: var(--secondary);
+            background: rgba(100, 181, 246, 0.3);
+            border-left-color: #64b5f6;
             font-weight: 600;
         }
 
@@ -109,118 +131,141 @@
             font-size: 1.2rem;
         }
 
-        /* Hero Section */
+        /* Hero Section - 参考CVPR 2025风格 */
         .hero {
-            background: var(--dark-bg);
+            background: transparent;
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 0;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--secondary);
-            opacity: 0.6;
-        }
-
+        
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 2;
         }
-
+        
         .hero h1 {
             font-family: 'Roboto Slab', serif;
-            font-size: 2.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            line-height: 1.1;
         }
-
+        
         .hero h2 {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            opacity: 0.85;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            line-height: 1.4;
         }
 
+        /* Hero info cards - CVPR风格 */
         .hero-info {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            margin: 2.5rem 0;
+            gap: 3rem;
+            margin: 3rem 0;
         }
 
         .hero-info-item {
             text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 160px;
         }
 
         .hero-info-item i {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
             display: block;
-            color: var(--secondary);
+            color: #64b5f6;
         }
 
-        /* Main Content */
+        .hero-info-item strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Content - CVPR风格 */
         .main-content {
-            padding: 3rem 0;
+            padding: 0;
+            position: relative;
+            z-index: 2;
         }
 
         section {
-            padding: 3rem 0;
-            max-width: 900px;
+            padding: 4rem 0;
+            max-width: 1000px;
             margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 2rem;
+            padding-right: 2rem;
         }
 
         .section-title {
             font-family: 'Roboto Slab', serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 2.5rem;
-            color: var(--header-color);
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             position: relative;
-            padding-bottom: 0.8rem;
-            letter-spacing: 0.5px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
+            width: 60px;
+            height: 3px;
+            background: #64b5f6;
         }
 
-        /* Card styling */
+        /* Card styling - CVPR风格 */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
         .content-text {
             font-size: 1rem;
             margin-bottom: 1.5rem;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--text-primary);
+            font-weight: 400;
         }
 
         .highlight {
@@ -341,31 +386,40 @@
             color: var(--text-secondary);
         }
 
-        /* Topic List Styles */
+        /* Topic List Styles - CVPR风格 */
         .topic-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .topic-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1.4rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(100, 181, 246, 0.5);
         }
 
         .topic-title {
             font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--primary);
+            font-weight: 700;
+            color: #1a237e;
             margin-bottom: 0.7rem;
             line-height: 1.4;
         }
 
         .topic-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+            font-size: 0.9rem;
+            color: #424242;
             font-style: italic;
             line-height: 1.5;
             margin: 0;
@@ -408,58 +462,91 @@
             font-weight: 400;
         }
 
-        /* Button styles */
+        /* Button styles - CVPR风格 */
         .btn {
             display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background: var(--secondary);
+            padding: 1rem 2rem;
+            background: #64b5f6;
             color: white;
             text-decoration: none;
-            border-radius: 3px;
+            border-radius: 50px;
             border: none;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(100, 181, 246, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
         }
 
         .btn:hover {
-            background: var(--accent);
+            background: #42a5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(100, 181, 246, 0.6);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
         }
 
-        /* Footer */
+        /* Footer - CVPR风格 */
         footer {
-            background: var(--dark-bg);
-            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            color: rgba(255, 255, 255, 0.9);
             text-align: center;
             padding: 3rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+            border-top: 1px solid rgba(100, 181, 246, 0.3);
+            position: relative;
         }
 
         .footer-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         .social-links {
             margin-top: 1.5rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .social-links a {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            transition: color 0.2s;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(100, 181, 246, 0.1);
+            border: 1px solid rgba(100, 181, 246, 0.3);
         }
 
         .social-links a:hover {
-            color: var(--secondary);
+            color: white;
+            background: rgba(100, 181, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 181, 246, 0.4);
         }
 
         /* Responsive */
@@ -469,7 +556,7 @@
                 top: 50%;
                 right: 0;
                 height: auto;
-                border-radius: 5px 0 0 5px;
+                border-radius: 16px 0 0 16px;
                 transition: transform 0.3s ease;
             }
             
@@ -481,19 +568,34 @@
                 display: block;
             }
             
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
             /* Make committee chairs 2x2 on tablets */
             #committee > div:first-child {
                 grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .speakers-grid-container:not(#organizers .speakers-grid-container) {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            /* Plans to Attract Quality Submissions - 平板保持2x2 */
+            #attractions > div {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .hero h2 {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             
             .hero-info {
@@ -501,40 +603,370 @@
                 gap: 1.5rem;
             }
             
-            .grid-container {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #organizers .speaker-item {
+                width: 45%;
+                margin: 0 2.5% 2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .speakers-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
-
-            .speaker-bio-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
+            
+            .speaker-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
             }
-
-            .bio-avatar {
-                align-self: center;
-                width: 100px;
-                height: 100px;
+            
+            .speakers-grid-title {
+                font-size: 2rem;
+                padding: 1rem;
             }
             
             /* Stack committee chairs on mobile */
             #committee > div:first-child {
                 grid-template-columns: 1fr !important;
             }
+
+            .topic-list {
+                grid-template-columns: 1fr;
+            }
+
+            /* Plans to Attract Quality Submissions - 移动端改为1列 */
+            #attractions > div {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1rem;
+            }
+
+            #organizers .speaker-item {
+                width: 80%;
+                margin: 0 auto 2rem;
+            }
+            
+            .speakers-grid-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .speaker-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+            }
+
+            #attractions > div {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Hover Effects for Cards */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Committee Section - CVPR风格 */
+        #committee > div:first-child {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        #committee > div:first-child > div {
+            background: linear-gradient(135deg, rgba(100, 181, 246, 0.9) 0%, rgba(66, 165, 245, 0.9) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(100, 181, 246, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        #committee > div:first-child > div:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(100, 181, 246, 0.4);
+        }
+
+        #committee > div:first-child > div > div {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        #committee > div:first-child h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Committee members section */
+        #committee > div:last-child {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        #committee > div:last-child h3 {
+            color: white;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #64b5f6, #42a5f5);
+            padding: 1rem;
+            border-radius: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        #committee > div:last-child > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        #committee > div:last-child > div > div {
+            background: rgba(248, 249, 250, 0.8);
+            border-left: 4px solid #64b5f6;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #committee > div:last-child > div > div:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(100, 181, 246, 0.2);
+            border-left-color: #42a5f5;
+        }
+
+        /* Quality Submissions Grid - CVPR风格 */
+        #attractions > div {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #attractions > div > div {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
         #attractions > div > div:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
-        #committee > div > div[style*="background: linear-gradient"]:hover {
-            transform: translateY(-5px) scale(1.02);
+        #attractions > div > div > div:first-child {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        #attractions > div > div > div:first-child > div {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        #attractions > div > div h3 {
+            color: #1a237e;
+            font-weight: 700;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Delete old unused styles */
+        /* Speakers Grid - CVPR风格 */
+        .speakers-grid {
+            background: transparent;
+            padding: 4rem 0;
+            border: none;
+        }
+
+        .speakers-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .speakers-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            justify-items: center;
+            align-items: start;
+        }
+
+        .speaker-item {
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .speaker-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Ensure even distribution for different numbers of items */
+        .speakers-grid-container:has(.speaker-item:nth-child(4):last-child) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .speakers-grid-container:has(.speaker-item:nth-child(5):last-child) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        /* Special layout for organizers section */
+        #organizers .speakers-grid-container {
+            display: block;
+            text-align: center;
+        }
+
+        /* First row with 3 people */
+        #organizers .first-row,
+        #organizers .second-row {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        #organizers .speaker-item {
+            margin: 0 1.5%;
+            width: 30%;
+            max-width: 250px;
+        }
+
+        #organizers .second-row {
+            margin-top: 3rem;
+        }
+
+        #organizers .second-row .speaker-item {
+            width: 30%;
+            max-width: 250px;
+        }
+
+        /* Speakers Grid - 增强文字可见性 */
+        .speakers-grid-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .speakers-grid-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #64b5f6;
+        }
+
+        .speaker-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-family: 'Roboto Slab', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .speaker-role {
+            font-size: 0.9rem;
+            color: #e3f2fd;
+            margin-bottom: 0.3rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.3rem;
+            border-radius: 6px;
+        }
+
+        .speaker-institution {
+            font-size: 0.85rem;
+            color: #81d4fa;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.3rem;
+            border-radius: 6px;
+        }
+
+        .speaker-avatar {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            overflow: hidden;
+            border: 3px solid rgba(100, 181, 246, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -576,7 +1008,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="#submission" class="btn">Submit Your Paper</a>
+                <a href="#submission" class="btn">Call for Paper</a>
             </div>
         </div>
     </section>
@@ -666,17 +1098,20 @@
             <h2 class="section-title">Submission Details</h2>
             <div class="card">
                 <p class="content-text">
-                    We invite both research and vision papers to contribute to the intersection of technology and standards in GenAI. Submissions should follow the ICDM regular research paper format guidelines and be submitted via OpenReview.
+                    We invite the submission of regular research papers (6-10 pages), including the bibliography and any possible appendices. Submissions must be in PDF format, and formatted according to IEEE Conference Template. Submitted papers will be assessed based on their novelty, technical quality, potential impact, insightfulness, depth, clarity, and reproducibility. All the papers are required to be submitted via the ADSD Submission. By the unique ICDM tradition, all accepted workshop papers will be published in the dedicated ICDMW proceedings published by the IEEE Computer Society Press.
                 </p>
                 <p class="content-text">
-                    Accepted papers will be presented at the workshop in either oral or poster presentations. The reviewing process will be double-blind. No formal proceedings will be generated from this workshop. Accepted papers will be published on OpenReview.
+                    Accepted papers will be presented at the workshop in either oral or poster presentations. The reviewing process will be double-blind.
                 </p>
                 <ul style="list-style-type: none; padding-left: 0;">
-                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Paper format:</span> Up to 6 pages (excluding references and appendices)</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Paper format:</span> 6-10 pages (including bibliography and appendices)</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Format requirement:</span> PDF format, IEEE Conference Template</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Submission system:</span> ADSD Submission</li>
                     <li style="margin-bottom: 0.5rem;"><span class="subsection">Submission deadline:</span> September 5th, 2025</li>
                     <li style="margin-bottom: 0.5rem;"><span class="subsection">Notification of acceptance:</span> October 15th, 2025</li>
                     <li style="margin-bottom: 0.5rem;"><span class="subsection">Camera-ready deadline:</span> November 1st, 2025</li>
-                    <li><span class="subsection">Workshop date:</span> November 12th, 2025 (tentative)</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Workshop date:</span> November 12th, 2025 (tentative)</li>
+                    <li><span class="subsection">Contact for questions:</span>vistagenai@gmail.com</li>
                 </ul>
             </div>
         </section>
@@ -769,59 +1204,42 @@
 
         <!-- Speakers Section -->
         <section id="speakers">
-            <h2 class="section-title">Preliminary List of Invited Speakers</h2>
-            
-            <div class="speaker-bio-card clickable-card" data-url="mailto:jinggao@purdue.edu">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Jing Gao</h4>
-                        <p class="bio-role">Opening Remarks & Keynote Speaker</p>
-                        <p class="bio-institution">Associate Professor at Purdue University</p>
-                    </div>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Vladimir Braverman</h4>
-                        <p class="bio-role">Tentative Keynote Speaker, GenAI Technology</p>
-                        <p class="bio-institution">Professor at Johns Hopkins University</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">David Atkinson, J.D.</h4>
-                        <p class="bio-role">Tentative Keynote Speaker, GenAI Standards</p>
-                        <p class="bio-institution">Lecturer at the McCombs School of Business at The University of Texas at Austin</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Qianqian Xie</h4>
-                        <p class="bio-role">Industry Showcase Speaker</p>
-                        <p class="bio-institution">The Fin AI</p>
+            <div class="speakers-grid">
+                <div class="speakers-container">
+                    <h3 class="speakers-grid-title">Preliminary List of Invited Speakers</h3>
+                    <div class="speakers-grid-container">
+                        <div class="speaker-item">
+                            <div class="speaker-avatar">
+                                👤
+                            </div>
+                            <div class="speaker-name">Jing Gao</div>
+                            <div class="speaker-role">Opening Remarks & Keynote Speaker</div>
+                            <div class="speaker-institution">Associate Professor at Purdue University</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-avatar">
+                                👤
+                            </div>
+                            <div class="speaker-name">Vladimir Braverman</div>
+                            <div class="speaker-role">Tentative Keynote Speaker, GenAI Technology</div>
+                            <div class="speaker-institution">Professor at Johns Hopkins University</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-avatar">
+                                👤
+                            </div>
+                            <div class="speaker-name">David Atkinson, J.D.</div>
+                            <div class="speaker-role">Tentative Keynote Speaker, GenAI Standards</div>
+                            <div class="speaker-institution">Lecturer at the McCombs School of Business at The University of Texas at Austin</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-avatar">
+                                👤
+                            </div>
+                            <div class="speaker-name">Qianqian Xie</div>
+                            <div class="speaker-role">Industry Showcase Speaker</div>
+                            <div class="speaker-institution">The Fin AI</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -829,100 +1247,55 @@
 
         <!-- Organizers Section -->
         <section id="organizers">
-            <h2 class="section-title">Biographies of Organizers</h2>
-            
-            <div class="speaker-bio-card clickable-card" data-url="mailto:dzhang42@stevens.edu">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Denghui Zhang</h4>
-                        <p class="bio-role">Assistant Professor</p>
-                        <p class="bio-institution">School of Business, Stevens Institute of Technology</p>
+            <div class="speakers-grid">
+                <div class="speakers-container">
+                    <h3 class="speakers-grid-title">Biographies of Organizers</h3>
+                    <div class="speakers-grid-container">
+                        <div class="first-row">
+                            <div class="speaker-item">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                                <div class="speaker-name">Denghui Zhang</div>
+                                <div class="speaker-role">Assistant Professor</div>
+                                <div class="speaker-institution">School of Business, Stevens Institute of Technology</div>
+                            </div>
+                            <div class="speaker-item">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                                <div class="speaker-name">Zhaozhuo Xu</div>
+                                <div class="speaker-role">Assistant Professor</div>
+                                <div class="speaker-institution">Department of Computer Science, Stevens Institute of Technology</div>
+                            </div>
+                            <div class="speaker-item">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                                <div class="speaker-name">Qingyun Wang</div>
+                                <div class="speaker-role">Incoming Assistant Professor</div>
+                                <div class="speaker-institution">College of William & Mary</div>
+                            </div>
+                        </div>
+                        <div class="second-row">
+                            <div class="speaker-item">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                                <div class="speaker-name">Jimin Huang</div>
+                                <div class="speaker-role">President</div>
+                                <div class="speaker-institution">The Fin AI</div>
+                            </div>
+                            <div class="speaker-item">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                                <div class="speaker-name">Jing Gao</div>
+                                <div class="speaker-role">Associate Professor</div>
+                                <div class="speaker-institution">Purdue University's Elmore Family School of Electrical and Computer Engineering</div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="bio-text">
-                        Denghui Zhang is an Assistant Professor in the School of Business at Stevens Institute of Technology. He studies the interplay between LLMs/GenAI, legal and socioethical issue, business and innovation. His work is published in refereed venues, such as IEEE TKDE, SIGKDD, NeurIPS, EMNLP, AAAI, etc., and won Best Student Paper award at 2023 International Conference on Information Systems.
-                    </p>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card clickable-card" data-url="mailto:zxu79@stevens.edu">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Zhaozhuo Xu</h4>
-                        <p class="bio-role">Assistant Professor</p>
-                        <p class="bio-institution">Department of Computer Science, Stevens Institute of Technology</p>
-                    </div>
-                    <p class="bio-text">
-                        Zhaozhuo Xu is an assistant professor at Stevens Institute of Technology, focusing on scalable and sustainable ML. His work, published in venues like NeurIPS, ICML, and ICLR, has been adopted by Huggingface and startups. He also serves as an area chair for major conferences, including ICLR, ICML, ARR, EMNLP and COLING. He received the AAAI-25 New Faculty Highlights. He is the leading organizer for the Research On Algorithms & Data Structures (ROADS) to Mega-AI Models Workshop at MLSys 2023, which invited Jonathan Frankle (Chief Scientist, Databricks Mosaic AI), Michael Mitzenmacher (Professor, Harvard University), Furong Huang (Associate Professor, University of Maryland, College Park), and Bilge Acun (Research Scientist at Meta AI / FAIR). The ROADs workshop includes oral paper presentations from CMU, Stanford, Airbnb, and Amazon, with total attendees ranking top in the MLSys 2023 workshops.
-                    </p>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card clickable-card" data-url="mailto:jimin.huang@thefin.ai">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Jimin Huang</h4>
-                        <p class="bio-role">President</p>
-                        <p class="bio-institution">The Fin AI</p>
-                    </div>
-                    <p class="bio-text">
-                        Jimin Huang is the president of The Fin AI community, which advances open science, tooling, and model development for financial services with a focus on responsible innovation. His research spans NLP and computational finance, emphasizing financial LLMs and open-source contributions. He organizes the FinLLM Challenge at FinNLP-AgentScen @ IJCAI-2024 and serves as general chair for the Joint Workshop on FinNLP, FNP, and LLMFinLegal @ COLING 2025.
-                    </p>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card clickable-card" data-url="mailto:qingyun4@illinois.edu">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Qingyun Wang</h4>
-                        <p class="bio-role">Incoming Assistant Professor</p>
-                        <p class="bio-institution">College of William & Mary</p>
-                    </div>
-                    <p class="bio-text">
-                        Qingyun Wang is the incoming assistant professor at William & Mary. He is among the first researchers to develop a virtual scientific research assistant for literature-based discovery by extracting and synthesizing insights from papers. He received the NAACL-HLT 2021 Best Demo Reward. He has experience presenting tutorials at EMNLP 2021, EACL 2024, and LREC-COLING 2024. He organized AI4Research workshop at AAAI 2025 and the Language + Molecules Workshop at ACL 2024.
-                    </p>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
-                </div>
-            </div>
-
-            <div class="speaker-bio-card clickable-card" data-url="mailto:jinggao@purdue.edu">
-                <div class="bio-avatar">
-                    👤
-                </div>
-                <div class="bio-content">
-                    <div class="bio-header">
-                        <h4 class="bio-name">Jing Gao</h4>
-                        <p class="bio-role">Associate Professor</p>
-                        <p class="bio-institution">Purdue University's Elmore Family School of Electrical and Computer Engineering</p>
-                    </div>
-                    <p class="bio-text">
-                        Jing Gao is an Associate Professor at Purdue University's Elmore Family School of Electrical and Computer Engineering. Her research spans data mining, focusing on information veracity, crowdsourcing, knowledge graphs, anomaly detection, and multi-source data integration, with applications in healthcare, cybersecurity, and education. She has received the NSF CAREER Award, ICDM Tao Li Award, and SDM/IBM Early Career Data Mining Researcher Award. She also serves as an editor for ACM Transactions on Intelligent Systems and Technology and IEEE Transactions on Knowledge and Data Engineering. She is one of the leading organizers of the TrueFact workshop held in conjunction with ACM KDD from 2019 to 2022, which provided a forum for researchers and practitioners in academia, government and industry to share insights on topics related to information quality.
-                    </p>
-                </div>
-                <div class="click-indicator">
-                    <span>📧 Email</span>
                 </div>
             </div>
         </section>
