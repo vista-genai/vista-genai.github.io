@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISTA - Visionary Innovation in Standards and Technology of GenAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #2980b9;
+            --dark-bg: #1a202c;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --link-color: #3498db;
+            --header-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--light-bg);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Right Side Navigation */
+        .right-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 1.5rem;
+            background: var(--dark-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-header {
+            color: white;
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            display: block;
+            border-left: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            border-left-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1001;
+            background: var(--dark-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--dark-bg);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--secondary);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0.85;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 2.5rem 0;
+        }
+
+        .hero-info-item {
+            text-align: center;
+        }
+
+        .hero-info-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--secondary);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        section {
+            padding: 3rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .section-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--header-color);
+            position: relative;
+            padding-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        /* Card styling */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .content-text {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .subsection {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .award-text {
+            font-weight: 500;
+            color: #6b5900;
+            background: #fffbeb;
+            padding: 8px 12px;
+            border-radius: 3px;
+            border: 1px solid #f7e9c3;
+            display: inline-block;
+            margin: 0.2rem 0;
+        }
+
+        .award-text::before {
+            content: '✓';
+            margin-right: 5px;
+        }
+
+        /* Grid layouts */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+        }
+
+        .grid-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Speaker Biography Styles */
+        .speaker-bio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .bio-avatar {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 3rem;
+        }
+
+        .bio-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .bio-content {
+            flex: 1;
+        }
+
+        .bio-header {
+            margin-bottom: 1rem;
+        }
+
+        .bio-name {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .bio-role {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            font-weight: 400;
+        }
+
+        .bio-institution {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .bio-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Topic List Styles */
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .topic-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.4rem;
+        }
+
+        .topic-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.7rem;
+            line-height: 1.4;
+        }
+
+        .topic-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Link styles */
+        .content-text a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .content-text a:hover {
+            border-bottom-color: var(--link-color);
+        }
+
+        /* Clickable Cards */
+        .clickable-card {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .clickable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .click-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            border: none;
+            transition: background-color 0.2s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .right-nav {
+                transform: translateX(100%) translateY(-50%);
+                top: 50%;
+                right: 0;
+                height: auto;
+                border-radius: 5px 0 0 5px;
+                transition: transform 0.3s ease;
+            }
+            
+            .right-nav.active {
+                transform: translateX(0) translateY(-50%);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Make committee chairs 2x2 on tablets */
+            #committee > div:first-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1rem;
+            }
+            
+            .hero-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .speaker-bio-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .bio-avatar {
+                align-self: center;
+                width: 100px;
+                height: 100px;
+            }
+            
+            /* Stack committee chairs on mobile */
+            #committee > div:first-child {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Hover Effects for Cards */
+        #attractions > div > div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        #committee > div > div[style*="background: linear-gradient"]:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- Right Side Navigation -->
+    <nav class="right-nav" id="rightNav">
+        <div class="nav-header">Navigation</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">Topic Description</a></li>
+            <li><a href="#scope">Topics of Interest</a></li>
+            <li><a href="#submission">Submission Details</a></li>
+            <li><a href="#attractions">Quality Submissions</a></li>
+            <li><a href="#speakers">Invited Speakers</a></li>
+            <li><a href="#organizers">Organizers</a></li>
+            <li><a href="#committee">Program Committee</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>VISTA Workshop</h1>
+            <h2>Visionary Innovation in Standards and Technology of GenAI</h2>
+            <div class="hero-info">
+                <div class="hero-info-item">
+                    <i>🗓️</i>
+                    <strong>November 12, 2025</strong>
+                </div>
+                <div class="hero-info-item">
+                    <i>📍</i>
+                    <strong>Washington DC</strong>
+                </div>
+                <div class="hero-info-item">
+                    <i>🌐</i>
+                    <strong>ICDM 2025</strong>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#submission" class="btn">Submit Your Paper</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">Topic Description</h2>
+            <div class="card">
+                <p class="content-text">
+                    The VISTA: Visionary Innovation in Standards and Technology of GenAI workshop at ICDM 2025 examines the intersection of Generative AI (GenAI) advancements and evolving community and legal standards. As GenAI transforms industries, it raises challenges in legal compliance and common sense considerations. This workshop convenes researchers, industry experts, and legal scholars to explore the alignment between technical innovation and regulatory frameworks, fostering discussions on responsible GenAI development.
+                </p>
+                <p class="content-text">
+                    Generative AI (GenAI) models, including large language models (LLMs) and diffusion models, are reshaping industries by automating content creation, enhancing decision-making, and enabling new forms of user interaction. However, their widespread adoption presents challenges in both technology and standards. How these new technologies perform with legal compliance and respect to common sense remains to be explored. This workshop brings together researchers and practitioners to explore the interaction of advanced GenAI technology and evolving corresponding standards. It aims to foster discussions on future innovations of GenAI in a regulated landscape.
+                </p>
+            </div>
+        </section>
+
+        <!-- Scope Section -->
+        <section id="scope">
+            <h2 class="section-title">Topics of Interest</h2>
+            <div class="card">
+                <p class="content-text">
+                    We welcome submissions on innovations in GenAI at the intersection of technology and standards. We are particularly interested in contributions that align GenAI technologies with legal regulations and common sense considerations. Potential topics include but are not limited to:
+                </p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <h4 class="topic-title">New GenAI models with legal considerations</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Novel GenAI model training and inference paradigm with legal compliance</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Efficient GenAI model customization with respect to legal regulations and common sense</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Analysis of data influence on GenAI models' behaviors related to common sense</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Copyright challenges in GenAI, including detection, quantification, and mitigation techniques</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Machine unlearning of GenAI models for legal compliance</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Implementations of GenAI standards in various applications</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Case studies of legal challenges in GenAI applications</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">GenAI-powered applications in digital finance</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">Technical contributions to ensure GenAI's compliance with financial regulations</h4>
+                        <p class="topic-description">(e.g., GDPR, SEC requirements)</p>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">GenAI applications in legal research, including contract analysis and case prediction</h4>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <h4 class="topic-title">GenAI applications in risk management and regulatory monitoring</h4>
+                    </div>
+                </div>
+                
+                <p class="content-text" style="margin-top: 2rem;">
+                    This workshop aims to bring together technical researchers, legal experts, and financial regulators to collaborate on developing comprehensive and practical approaches to GenAI development and its applications. The focus will be on ensuring legal compliance while integrating common-sense considerations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Submission Section -->
+        <section id="submission">
+            <h2 class="section-title">Submission Details</h2>
+            <div class="card">
+                <p class="content-text">
+                    We invite both research and vision papers to contribute to the intersection of technology and standards in GenAI. Submissions should follow the ICDM regular research paper format guidelines and be submitted via OpenReview.
+                </p>
+                <p class="content-text">
+                    Accepted papers will be presented at the workshop in either oral or poster presentations. The reviewing process will be double-blind. No formal proceedings will be generated from this workshop. Accepted papers will be published on OpenReview.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Paper format:</span> Up to 6 pages (excluding references and appendices)</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Submission deadline:</span> September 5th, 2025</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Notification of acceptance:</span> October 15th, 2025</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="subsection">Camera-ready deadline:</span> November 1st, 2025</li>
+                    <li><span class="subsection">Workshop date:</span> November 12th, 2025 (tentative)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Plans to Attract Quality Submissions -->
+        <section id="attractions">
+            <h2 class="section-title">Plans to Attract Quality Submissions</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Invited Papers Card -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; background: #e3f2fd; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <span style="font-size: 1.5rem;">📄</span>
+                        </div>
+                        <h3 style="color: var(--primary); font-weight: 600; margin: 0;">Invited Papers</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Leading researchers in data mining, AI, and social sciences have informally agreed to contribute:
+                    </p>
+                    <div style="background: #f8f9fa; border-radius: 6px; padding: 1rem;">
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Xia Ben Hu <span style="color: var(--text-secondary);">(Rice)</span></li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Anshumali Shrivastava <span style="color: var(--text-secondary);">(Rice)</span></li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Yanjie Fu <span style="color: var(--text-secondary);">(ASU)</span></li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Kunpeng Liu <span style="color: var(--text-secondary);">(Portland State)</span></li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Kaixiong Zhou <span style="color: var(--text-secondary);">(NCSU)</span></li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Prof. Ruixiang Tang <span style="color: var(--text-secondary);">(Rutgers)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Journal Tracks Card -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <span style="font-size: 1.5rem;">📚</span>
+                        </div>
+                        <h3 style="color: var(--primary); font-weight: 600; margin: 0;">Journal Tracks</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Inviting authors from top data mining journals to present their interdisciplinary research:
+                    </p>
+                    <div style="background: #f8f9fa; border-radius: 6px; padding: 1rem;">
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• ACM TKDD</li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• IEEE TKDE</li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• IEEE Trans. on Big Data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Industry Demonstrations Card -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; background: #fff3e0; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <span style="font-size: 1.5rem;">🏢</span>
+                        </div>
+                        <h3 style="color: var(--primary); font-weight: 600; margin: 0;">Industry Demonstrations</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Leading tech companies will showcase their GenAI implementations:
+                    </p>
+                    <div style="background: #f8f9fa; border-radius: 6px; padding: 1rem;">
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• The Fin AI</li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Amazon</li>
+                            <li style="padding: 0.3rem 0; color: var(--text-primary);">• Google</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Roundtable Discussion Card -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; background: #f3e5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <span style="font-size: 1.5rem;">🎯</span>
+                        </div>
+                        <h3 style="color: var(--primary); font-weight: 600; margin: 0;">Closed-Door Roundtable</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Exclusive discussion session to explore future challenges and opportunities in GenAI technology and standards. This will contribute to a comprehensive survey paper outlining key insights for the field.
+                    </p>
+                    <div style="margin-top: 1rem; padding: 0.5rem 1rem; background: #f3e5f5; border-radius: 4px; display: inline-block;">
+                        <span style="color: #6a1b9a; font-size: 0.85rem; font-weight: 600;">By Invitation Only</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers">
+            <h2 class="section-title">Preliminary List of Invited Speakers</h2>
+            
+            <div class="speaker-bio-card clickable-card" data-url="mailto:jinggao@purdue.edu">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Jing Gao</h4>
+                        <p class="bio-role">Opening Remarks & Keynote Speaker</p>
+                        <p class="bio-institution">Associate Professor at Purdue University</p>
+                    </div>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Vladimir Braverman</h4>
+                        <p class="bio-role">Tentative Keynote Speaker, GenAI Technology</p>
+                        <p class="bio-institution">Professor at Johns Hopkins University</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">David Atkinson, J.D.</h4>
+                        <p class="bio-role">Tentative Keynote Speaker, GenAI Standards</p>
+                        <p class="bio-institution">Lecturer at the McCombs School of Business at The University of Texas at Austin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Qianqian Xie</h4>
+                        <p class="bio-role">Industry Showcase Speaker</p>
+                        <p class="bio-institution">The Fin AI</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organizers Section -->
+        <section id="organizers">
+            <h2 class="section-title">Biographies of Organizers</h2>
+            
+            <div class="speaker-bio-card clickable-card" data-url="mailto:dzhang42@stevens.edu">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Denghui Zhang</h4>
+                        <p class="bio-role">Assistant Professor</p>
+                        <p class="bio-institution">School of Business, Stevens Institute of Technology</p>
+                    </div>
+                    <p class="bio-text">
+                        Denghui Zhang is an Assistant Professor in the School of Business at Stevens Institute of Technology. He studies the interplay between LLMs/GenAI, legal and socioethical issue, business and innovation. His work is published in refereed venues, such as IEEE TKDE, SIGKDD, NeurIPS, EMNLP, AAAI, etc., and won Best Student Paper award at 2023 International Conference on Information Systems.
+                    </p>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card clickable-card" data-url="mailto:zxu79@stevens.edu">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Zhaozhuo Xu</h4>
+                        <p class="bio-role">Assistant Professor</p>
+                        <p class="bio-institution">Department of Computer Science, Stevens Institute of Technology</p>
+                    </div>
+                    <p class="bio-text">
+                        Zhaozhuo Xu is an assistant professor at Stevens Institute of Technology, focusing on scalable and sustainable ML. His work, published in venues like NeurIPS, ICML, and ICLR, has been adopted by Huggingface and startups. He also serves as an area chair for major conferences, including ICLR, ICML, ARR, EMNLP and COLING. He received the AAAI-25 New Faculty Highlights. He is the leading organizer for the Research On Algorithms & Data Structures (ROADS) to Mega-AI Models Workshop at MLSys 2023, which invited Jonathan Frankle (Chief Scientist, Databricks Mosaic AI), Michael Mitzenmacher (Professor, Harvard University), Furong Huang (Associate Professor, University of Maryland, College Park), and Bilge Acun (Research Scientist at Meta AI / FAIR). The ROADs workshop includes oral paper presentations from CMU, Stanford, Airbnb, and Amazon, with total attendees ranking top in the MLSys 2023 workshops.
+                    </p>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card clickable-card" data-url="mailto:jimin.huang@thefin.ai">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Jimin Huang</h4>
+                        <p class="bio-role">President</p>
+                        <p class="bio-institution">The Fin AI</p>
+                    </div>
+                    <p class="bio-text">
+                        Jimin Huang is the president of The Fin AI community, which advances open science, tooling, and model development for financial services with a focus on responsible innovation. His research spans NLP and computational finance, emphasizing financial LLMs and open-source contributions. He organizes the FinLLM Challenge at FinNLP-AgentScen @ IJCAI-2024 and serves as general chair for the Joint Workshop on FinNLP, FNP, and LLMFinLegal @ COLING 2025.
+                    </p>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card clickable-card" data-url="mailto:qingyun4@illinois.edu">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Qingyun Wang</h4>
+                        <p class="bio-role">Incoming Assistant Professor</p>
+                        <p class="bio-institution">College of William & Mary</p>
+                    </div>
+                    <p class="bio-text">
+                        Qingyun Wang is the incoming assistant professor at William & Mary. He is among the first researchers to develop a virtual scientific research assistant for literature-based discovery by extracting and synthesizing insights from papers. He received the NAACL-HLT 2021 Best Demo Reward. He has experience presenting tutorials at EMNLP 2021, EACL 2024, and LREC-COLING 2024. He organized AI4Research workshop at AAAI 2025 and the Language + Molecules Workshop at ACL 2024.
+                    </p>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+
+            <div class="speaker-bio-card clickable-card" data-url="mailto:jinggao@purdue.edu">
+                <div class="bio-avatar">
+                    👤
+                </div>
+                <div class="bio-content">
+                    <div class="bio-header">
+                        <h4 class="bio-name">Jing Gao</h4>
+                        <p class="bio-role">Associate Professor</p>
+                        <p class="bio-institution">Purdue University's Elmore Family School of Electrical and Computer Engineering</p>
+                    </div>
+                    <p class="bio-text">
+                        Jing Gao is an Associate Professor at Purdue University's Elmore Family School of Electrical and Computer Engineering. Her research spans data mining, focusing on information veracity, crowdsourcing, knowledge graphs, anomaly detection, and multi-source data integration, with applications in healthcare, cybersecurity, and education. She has received the NSF CAREER Award, ICDM Tao Li Award, and SDM/IBM Early Career Data Mining Researcher Award. She also serves as an editor for ACM Transactions on Intelligent Systems and Technology and IEEE Transactions on Knowledge and Data Engineering. She is one of the leading organizers of the TrueFact workshop held in conjunction with ACM KDD from 2019 to 2022, which provided a forum for researchers and practitioners in academia, government and industry to share insights on topics related to information quality.
+                    </p>
+                </div>
+                <div class="click-indicator">
+                    <span>📧 Email</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Committee Section -->
+        <section id="committee">
+            <h2 class="section-title">Tentative Program Committee</h2>
+            
+            <!-- Leadership Roles -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem;">
+                <!-- General Chairs -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
+                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span style="font-size: 1.5rem;">👥</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">General Chairs</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">
+                        Jing Gao<br>
+                        Denghui Zhang
+                    </p>
+                </div>
+
+                <!-- Program Chair -->
+                <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(250, 112, 154, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
+                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span style="font-size: 1.5rem;">📋</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Program Chair</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Zhaozhuo Xu</p>
+                </div>
+
+                <!-- Local Chair -->
+                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
+                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span style="font-size: 1.5rem;">📍</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Local Chair</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Qingyun Wang</p>
+                </div>
+
+                <!-- Publicity Chair -->
+                <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 12px; padding: 1.5rem; color: #333; text-align: center; box-shadow: 0 5px 15px rgba(168, 237, 234, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
+                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span style="font-size: 1.5rem;">📢</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Publicity Chair</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Jimin Huang</p>
+                </div>
+            </div>
+
+            <!-- Committee Members -->
+            <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <h3 style="color: var(--primary); margin-bottom: 2rem; font-weight: 600; text-align: center; font-size: 1.3rem;">
+                    <span style="display: inline-block; margin-right: 0.5rem;">🎓</span>
+                    Program Committee Members
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">David Atkinson</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">UT Austin</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Qianqian Xie</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">The Fin AI</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Boyi Wei</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Princeton University</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Tianfu Fu</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">OpenAI</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Jialiang Xu</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Stanford University</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Yanzhou Pan</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Google</span>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
+                        <strong style="color: var(--primary);">Jiateng Liu</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">UIUC</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 VISTA Workshop. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">📧</a>
+                <a href="#">🐦</a>
+                <a href="#">💼</a>
+                <a href="#">📘</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const rightNav = document.getElementById('rightNav');
+        
+        menuToggle.addEventListener('click', function() {
+            rightNav.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    rightNav.classList.remove('active');
+                }
+            });
+        });
+
+        // Active link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', function() {
+            updateActiveLink();
+        });
+
+        // Clickable cards functionality
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.getAttribute('data-url');
+                if (url) {
+                    if (url.startsWith('mailto:')) {
+                        const tempLink = document.createElement('a');
+                        tempLink.href = url;
+                        tempLink.style.display = 'none';
+                        document.body.appendChild(tempLink);
+                        tempLink.click();
+                        document.body.removeChild(tempLink);
+                    } else {
+                        window.open(url, '_blank');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
