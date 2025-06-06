@@ -618,8 +618,8 @@
             }
             
             .speaker-avatar {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
                 font-size: 3.5rem;
             }
             
@@ -664,8 +664,8 @@
             }
             
             .speaker-avatar {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
                 font-size: 3.5rem;
             }
 
@@ -856,6 +856,16 @@
             object-position: center;
         }
 
+        /* Special positioning for Jing Gao's photo */
+        .speaker-avatar img[alt="Jing Gao"] {
+            object-position: center 2%;
+        }
+
+        /* Special positioning for Denghui Zhang's photo */
+        .speaker-avatar img[alt="Denghui Zhang"] {
+            object-position: center 2%;
+        }
+
         /* Ensure even distribution for different numbers of items */
         .speakers-grid-container:has(.speaker-item:nth-child(4):last-child) {
             grid-template-columns: repeat(4, 1fr);
@@ -967,6 +977,18 @@
             color: rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Speaker avatar link styling */
+        .speaker-avatar a {
+            display: block;
+            text-decoration: none;
+        }
+
+        a .speaker-avatar:hover {
+            transform: scale(1.05);
+            border-color: #81d4fa;
+            box-shadow: 0 12px 40px rgba(129, 212, 250, 0.4);
         }
     </style>
 </head>
@@ -1209,33 +1231,41 @@
                     <h3 class="speakers-grid-title">Preliminary List of Invited Speakers</h3>
                     <div class="speakers-grid-container">
                         <div class="speaker-item">
-                            <div class="speaker-avatar">
-                                👤
-                            </div>
+                            <a href="https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3614" target="_blank">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                            </a>
                             <div class="speaker-name">Jing Gao</div>
                             <div class="speaker-role">Opening Remarks & Keynote Speaker</div>
                             <div class="speaker-institution">Associate Professor at Purdue University</div>
                         </div>
                         <div class="speaker-item">
-                            <div class="speaker-avatar">
-                                👤
-                            </div>
+                            <a href="https://www.cs.jhu.edu/~vova/" target="_blank">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                            </a>
                             <div class="speaker-name">Vladimir Braverman</div>
                             <div class="speaker-role">Tentative Keynote Speaker, GenAI Technology</div>
                             <div class="speaker-institution">Professor at Johns Hopkins University</div>
                         </div>
                         <div class="speaker-item">
-                            <div class="speaker-avatar">
-                                👤
-                            </div>
+                            <a href="https://www.mccombs.utexas.edu/faculty-and-research/faculty-directory/david-atkinson/" target="_blank">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                            </a>
                             <div class="speaker-name">David Atkinson, J.D.</div>
                             <div class="speaker-role">Tentative Keynote Speaker, GenAI Standards</div>
                             <div class="speaker-institution">Lecturer at the McCombs School of Business at The University of Texas at Austin</div>
                         </div>
                         <div class="speaker-item">
-                            <div class="speaker-avatar">
-                                👤
-                            </div>
+                            <a href="https://thefinai.com/" target="_blank">
+                                <div class="speaker-avatar">
+                                    👤
+                                </div>
+                            </a>
                             <div class="speaker-name">Qianqian Xie</div>
                             <div class="speaker-role">Industry Showcase Speaker</div>
                             <div class="speaker-institution">The Fin AI</div>
@@ -1253,25 +1283,31 @@
                     <div class="speakers-grid-container">
                         <div class="first-row">
                             <div class="speaker-item">
-                                <div class="speaker-avatar">
-                                    👤
-                                </div>
+                                <a href="https://zhangdenghui.site/" target="_blank">
+                                    <div class="speaker-avatar">
+                                        <img src="./images/zdh.jpg" alt="Denghui Zhang">
+                                    </div>
+                                </a>
                                 <div class="speaker-name">Denghui Zhang</div>
                                 <div class="speaker-role">Assistant Professor</div>
                                 <div class="speaker-institution">School of Business, Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
-                                <div class="speaker-avatar">
-                                    👤
-                                </div>
+                                <a href="https://ottovonxu.github.io/" target="_blank">
+                                    <div class="speaker-avatar">
+                                        <img src="./images/zhaozhuo.jpg" alt="Zhaozhuo Xu">
+                                    </div>
+                                </a>
                                 <div class="speaker-name">Zhaozhuo Xu</div>
                                 <div class="speaker-role">Assistant Professor</div>
                                 <div class="speaker-institution">Department of Computer Science, Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
-                                <div class="speaker-avatar">
-                                    👤
-                                </div>
+                                <a href="https://eaglew.github.io/" target="_blank">
+                                    <div class="speaker-avatar">
+                                        <img src="./images/qingyun.jpg" alt="Qingyun Wang">
+                                    </div>
+                                </a>
                                 <div class="speaker-name">Qingyun Wang</div>
                                 <div class="speaker-role">Assistant Professor</div>
                                 <div class="speaker-institution">College of William & Mary</div>
@@ -1279,17 +1315,21 @@
                         </div>
                         <div class="second-row">
                             <div class="speaker-item">
-                                <div class="speaker-avatar">
-                                    👤
-                                </div>
+                                <a href="https://www.linkedin.com/in/jimin-huang-239abb261/?locale=en_US" target="_blank">
+                                    <div class="speaker-avatar">
+                                        👤
+                                    </div>
+                                </a>
                                 <div class="speaker-name">Jimin Huang</div>
                                 <div class="speaker-role">President</div>
                                 <div class="speaker-institution">The Fin AI</div>
                             </div>
                             <div class="speaker-item">
-                                <div class="speaker-avatar">
-                                    👤
-                                </div>
+                                <a href="https://engineering.purdue.edu/~jinggao/" target="_blank">
+                                    <div class="speaker-avatar">
+                                        <img src="./images/jinggao.jpg" alt="Jing Gao">
+                                    </div>
+                                </a>
                                 <div class="speaker-name">Jing Gao</div>
                                 <div class="speaker-role">Associate Professor</div>
                                 <div class="speaker-institution">Purdue University's Elmore Family School of Electrical and Computer Engineering</div>
