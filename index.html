@@ -49,6 +49,7 @@
             opacity: 0.99; /* 降低不透明度，确保内容可读 */
             z-index: -1;
             pointer-events: none;
+            will-change: transform; /* 优化渲染性能 */
         }
 
         /* Right Side Navigation */
@@ -977,16 +978,17 @@
             color: rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transform: translateZ(0); /* 启用硬件加速 */
         }
 
-        /* Speaker avatar link styling */
+        /* Speaker avatar link styling - 修复链接处理 */
         .speaker-avatar a {
             display: block;
             text-decoration: none;
         }
 
         a .speaker-avatar:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateZ(0);
             border-color: #81d4fa;
             box-shadow: 0 12px 40px rgba(129, 212, 250, 0.4);
         }
@@ -1231,9 +1233,9 @@
                     <h3 class="speakers-grid-title">Preliminary List of Invited Speakers</h3>
                     <div class="speakers-grid-container">
                         <div class="speaker-item">
-                            <a href="https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3614" target="_blank">
+                            <a href="https://engineering.purdue.edu/~jinggao/" target="_blank" onclick="event.stopPropagation();">
                                 <div class="speaker-avatar">
-                                    👤
+                                    <img src="./images/jinggao.jpg" alt="Jing Gao">
                                 </div>
                             </a>
                             <div class="speaker-name">Jing Gao</div>
@@ -1241,9 +1243,9 @@
                             <div class="speaker-institution">Associate Professor at Purdue University</div>
                         </div>
                         <div class="speaker-item">
-                            <a href="https://www.cs.jhu.edu/~vova/" target="_blank">
+                            <a href="https://profiles.rice.edu/faculty/vladimir-braverman" target="_blank" onclick="event.stopPropagation();">
                                 <div class="speaker-avatar">
-                                    👤
+                                    <img src="./images/Braverman.jpg" alt="Vladimir Braverman">
                                 </div>
                             </a>
                             <div class="speaker-name">Vladimir Braverman</div>
@@ -1251,9 +1253,9 @@
                             <div class="speaker-institution">Professor at Johns Hopkins University</div>
                         </div>
                         <div class="speaker-item">
-                            <a href="https://www.mccombs.utexas.edu/faculty-and-research/faculty-directory/david-atkinson/" target="_blank">
+                            <a href="https://www.mccombs.utexas.edu/faculty-and-research/faculty-directory/david-atkinson/" target="_blank" onclick="event.stopPropagation();">
                                 <div class="speaker-avatar">
-                                    👤
+                                    <img src="./images/davidatkin.jpeg" alt="David Atkinson">
                                 </div>
                             </a>
                             <div class="speaker-name">David Atkinson, J.D.</div>
@@ -1261,7 +1263,7 @@
                             <div class="speaker-institution">Lecturer at the McCombs School of Business at The University of Texas at Austin</div>
                         </div>
                         <div class="speaker-item">
-                            <a href="https://thefinai.com/" target="_blank">
+                            <a href="https://thefinai.com/" target="_blank" onclick="event.stopPropagation();">
                                 <div class="speaker-avatar">
                                     👤
                                 </div>
@@ -1283,7 +1285,7 @@
                     <div class="speakers-grid-container">
                         <div class="first-row">
                             <div class="speaker-item">
-                                <a href="https://zhangdenghui.site/" target="_blank">
+                                <a href="https://zhangdenghui.site/" target="_blank" onclick="event.stopPropagation();">
                                     <div class="speaker-avatar">
                                         <img src="./images/zdh.jpg" alt="Denghui Zhang">
                                     </div>
@@ -1293,7 +1295,7 @@
                                 <div class="speaker-institution">School of Business, Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
-                                <a href="https://ottovonxu.github.io/" target="_blank">
+                                <a href="https://ottovonxu.github.io/" target="_blank" onclick="event.stopPropagation();">
                                     <div class="speaker-avatar">
                                         <img src="./images/zhaozhuo.jpg" alt="Zhaozhuo Xu">
                                     </div>
@@ -1303,7 +1305,7 @@
                                 <div class="speaker-institution">Department of Computer Science, Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
-                                <a href="https://eaglew.github.io/" target="_blank">
+                                <a href="https://eaglew.github.io/" target="_blank" onclick="event.stopPropagation();">
                                     <div class="speaker-avatar">
                                         <img src="./images/qingyun.jpg" alt="Qingyun Wang">
                                     </div>
@@ -1315,9 +1317,9 @@
                         </div>
                         <div class="second-row">
                             <div class="speaker-item">
-                                <a href="https://www.linkedin.com/in/jimin-huang-239abb261/?locale=en_US" target="_blank">
+                                <a href="https://www.linkedin.com/in/jimin-huang-239abb261/?locale=en_US" target="_blank" onclick="event.stopPropagation();">
                                     <div class="speaker-avatar">
-                                        👤
+                                        <img src="./images/jiminhuang.jpeg" alt="Jimin Huang">
                                     </div>
                                 </a>
                                 <div class="speaker-name">Jimin Huang</div>
@@ -1325,7 +1327,7 @@
                                 <div class="speaker-institution">The Fin AI</div>
                             </div>
                             <div class="speaker-item">
-                                <a href="https://engineering.purdue.edu/~jinggao/" target="_blank">
+                                <a href="https://engineering.purdue.edu/~jinggao/" target="_blank" onclick="event.stopPropagation();">
                                     <div class="speaker-avatar">
                                         <img src="./images/jinggao.jpg" alt="Jing Gao">
                                     </div>
@@ -1484,10 +1486,12 @@
             });
         }
         
-
         window.addEventListener('scroll', updateActiveLink);
         window.addEventListener('load', function() {
             updateActiveLink();
+            
+            // 强制保持背景图像
+            document.body.style.backgroundImage = "url('./images/background.png')";
         });
 
         // Clickable cards functionality
@@ -1507,6 +1511,18 @@
                         window.open(url, '_blank');
                     }
                 }
+            });
+        });
+        
+        // 修复speaker头像链接问题
+        document.querySelectorAll('.speaker-item a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 阻止事件冒泡以避免可能的事件干扰
+                e.stopPropagation();
+                // 用新窗口打开链接而非在当前窗口
+                window.open(this.href, '_blank');
+                // 阻止默认行为以防止影响页面状态
+                e.preventDefault();
             });
         });
     </script>
