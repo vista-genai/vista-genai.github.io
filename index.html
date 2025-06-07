@@ -749,25 +749,95 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        #committee > div:last-child > div {
+        /* Committee members grid */
+        .committee-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
-        #committee > div:last-child > div > div {
-            background: rgba(248, 249, 250, 0.8);
-            border-left: 4px solid #64b5f6;
-            padding: 1.2rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        @media (max-width: 768px) {
+            .committee-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+            
+            .committee-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .member-photo {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .committee-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        #committee > div:last-child > div > div:hover {
+        /* Committee member card */
+        .committee-card {
+            background: white;
+            border-left: 5px solid #3a7bd5;
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .committee-card:hover {
             transform: translateX(5px);
-            box-shadow: 0 4px 20px rgba(100, 181, 246, 0.2);
-            border-left-color: #42a5f5;
+            box-shadow: 0 8px 25px rgba(58, 123, 213, 0.25);
+            border-left-color: #00d2ff;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-info strong {
+            color: #1a237e;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .member-info span {
+            color: #546e7a;
+            font-size: 1rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .committee-header h3 {
+                font-size: 1.8rem;
+            }
+            
+            .member-photo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .member-info strong {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .committee-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .member-photo {
+                width: 60px;
+                height: 60px;
+            }
         }
 
         /* Quality Submissions Grid - CVPR风格 */
@@ -992,6 +1062,80 @@
             border-color: #81d4fa;
             box-shadow: 0 12px 40px rgba(129, 212, 250, 0.4);
         }
+
+        /* Committee section header */
+        .committee-header {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            color: white;
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(58, 123, 213, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .committee-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .committee-header span {
+            font-size: 2.5rem;
+            margin-right: 0;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .committee-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Committee members container */
+        .committee-members {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Committee member photo style */
+        .member-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+            border: 3px solid #e0e0e0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .committee-card:hover .member-photo {
+            border-color: #00d2ff;
+            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -1012,22 +1156,48 @@
     <!-- Mobile Menu Toggle -->
     <button class="menu-toggle" id="menuToggle">☰</button>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <h1>VISTA Workshop</h1>
             <h2>Visionary Innovation in Standards and Technology of GenAI</h2>
             <div class="hero-info">
+                <!-- Date Icon - Digital Calendar -->
                 <div class="hero-info-item">
-                    <i>🗓️</i>
+                    <i style="font-size: 2rem; color: #64b5f6; text-shadow: 0 0 10px rgba(100, 181, 246, 0.6);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <circle cx="9" cy="16" r="1"></circle>
+                            <circle cx="15" cy="16" r="1"></circle>
+                        </svg>
+                    </i>
                     <strong>November 12, 2025</strong>
                 </div>
+                
+                <!-- Location Icon - Digital Location -->
                 <div class="hero-info-item">
-                    <i>📍</i>
+                    <i style="font-size: 2rem; color: #64b5f6; text-shadow: 0 0 10px rgba(100, 181, 246, 0.6);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                            <line x1="8" y1="2" x2="16" y2="2"></line>
+                            <line x1="12" y1="2" x2="12" y2="4"></line>
+                        </svg>
+                    </i>
                     <strong>Washington DC</strong>
                 </div>
+                
+                <!-- Conference Icon - Digital Network/AI -->
                 <div class="hero-info-item">
-                    <i>🌐</i>
+                    <i style="font-size: 2rem; color: #64b5f6; text-shadow: 0 0 10px rgba(100, 181, 246, 0.6);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </i>
                     <strong>ICDM 2025</strong>
                 </div>
             </div>
@@ -1036,7 +1206,6 @@
             </div>
         </div>
     </section>
-
     <!-- Main Content -->
     <div class="main-content">
         <!-- About Section -->
@@ -1099,7 +1268,6 @@
                     
                     <div class="topic-item">
                         <h4 class="topic-title">Technical contributions to ensure GenAI's compliance with financial regulations</h4>
-                        <p class="topic-description">(e.g., General Data Protection Regulation, Securities and Exchange Commission requirements)</p>
                     </div>
                     
                     <div class="topic-item">
@@ -1290,7 +1458,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Denghui Zhang</div>
-                                <!-- <div class="speaker-role">Assistant Professor</div> -->
+                                <div class="speaker-role">General Chair</div>
                                 <div class="speaker-institution">Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
@@ -1300,7 +1468,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Zhaozhuo Xu</div>
-                                <!-- <div class="speaker-role">Assistant Professor</div> -->
+                                <div class="speaker-role">Program Chair</div>
                                 <div class="speaker-institution">Stevens Institute of Technology</div>
                             </div>
                             <div class="speaker-item">
@@ -1310,7 +1478,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Qingyun Wang</div>
-                                <!-- <div class="speaker-role">Assistant Professor</div> -->
+                                <div class="speaker-role">Local Chair</div>
                                 <div class="speaker-institution">College of William & Mary</div>
                             </div>
                         </div>
@@ -1322,7 +1490,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Jimin Huang</div>
-                                <!-- <div class="speaker-role">President</div> -->
+                                <div class="speaker-role">Publicity Chair</div>
                                 <div class="speaker-institution">The Fin AI</div>
                             </div>
                             <div class="speaker-item">
@@ -1332,7 +1500,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Jing Gao</div>
-                                <!-- <div class="speaker-role">Associate Professor</div> -->
+                                <div class="speaker-role">General Chair</div>
                                 <div class="speaker-institution">Purdue University</div>
                             </div>
                             <div class="speaker-item">
@@ -1342,6 +1510,7 @@
                                     </div>
                                 </a>
                                 <div class="speaker-name">Yide Ran</div>
+                                <div class="speaker-role">Web Chair</div>
                                 <div class="speaker-institution">Stevens Institute of Technology</div>
                             </div>
                         </div>
@@ -1353,83 +1522,80 @@
         <!-- Program Committee Section -->
         <section id="committee">
             <h2 class="section-title">Tentative Program Committee</h2>
-            
-            <!-- Leadership Roles -->
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem;">
-                <!-- General Chairs -->
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
-                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                        <span style="font-size: 1.5rem;">👥</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">General Chairs</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">
-                        Jing Gao<br>
-                        Denghui Zhang
-                    </p>
-                </div>
-
-                <!-- Program Chair -->
-                <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(250, 112, 154, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
-                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                        <span style="font-size: 1.5rem;">📋</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Program Chair</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Zhaozhuo Xu</p>
-                </div>
-
-                <!-- Local Chair -->
-                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; padding: 1.5rem; color: white; text-align: center; box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
-                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                        <span style="font-size: 1.5rem;">📍</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Local Chair</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Qingyun Wang</p>
-                </div>
-
-                <!-- Publicity Chair -->
-                <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 12px; padding: 1.5rem; color: #333; text-align: center; box-shadow: 0 5px 15px rgba(168, 237, 234, 0.3); transform: translateY(0); transition: transform 0.3s ease;">
-                    <div style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                        <span style="font-size: 1.5rem;">📢</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Publicity Chair</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.95; margin: 0;">Jimin Huang</p>
-                </div>
-            </div>
 
             <!-- Committee Members -->
-            <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                <h3 style="color: var(--primary); margin-bottom: 2rem; font-weight: 600; text-align: center; font-size: 1.3rem;">
-                    <span style="display: inline-block; margin-right: 0.5rem;">🎓</span>
-                    Program Committee Members
-                </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">David Atkinson</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">University of Texas at Austin</span>
+            <div class="committee-members">
+                <div style="position: relative; text-align: center; margin-bottom: 2.5rem;">
+                    <div style="position: relative; display: inline-block;">
+                        <div style="text-align: center">
+                            <h3 style="position: relative; font-size: 2rem; font-weight: 700; color: white; display: inline-block; padding: 1rem 3rem; background: linear-gradient(135deg, #1a237e, #42a5f5); border-radius: 12px; box-shadow: 0 8px 25px rgba(26, 35, 126, 0.3); text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+                                <span style="position: relative; z-index: 2;">
+                                    Program Committee Members
+                                </span>
+                            </h3>
+                        </div>
                     </div>
-                    <!-- <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Qianqian Xie</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">The Fin AI</span>
-                    </div> -->
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Boyi Wei</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Princeton University</span>
+                </div>
+                
+                <div class="committee-grid">
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/davidatkin.jpeg" alt="David Atkinson" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">David Atkinson</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">University of Texas at Austin</span>
+                        </div>
                     </div>
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Tianfu Fu</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">OpenAI</span>
+                    
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/boyi.png" alt="Boyi Wei" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Boyi Wei</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">Princeton University</span>
+                        </div>
                     </div>
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Jialiang Xu</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Stanford University</span>
+                    
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/futianfu.jpg" alt="Tianfu Fu" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Tianfu Fu</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">OpenAI</span>
+                        </div>
                     </div>
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Yanzhou Pan</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">Google</span>
+                    
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/jialiangxu.jpg" alt="Jialiang Xu" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Jialiang Xu</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">Stanford University</span>
+                        </div>
                     </div>
-                    <div style="background: #f8f9fa; border-left: 4px solid var(--secondary); padding: 1rem 1.5rem; border-radius: 4px;">
-                        <strong style="color: var(--primary);">Jiateng Liu</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem; display: block;">University of Illinois at Urbana-Champaign</span>
+                    
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/yanzhoupan.jpeg" alt="Yanzhou Pan" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Yanzhou Pan</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">Google</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('div:first-child').style.borderColor='#00d2ff'; this.querySelector('div:first-child').style.transform='scale(1.05)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('div:first-child').style.borderColor='#e0e0e0'; this.querySelector('div:first-child').style.transform='scale(1)';">
+                        <div style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <img src="./images/jiateng liu.jpg" alt="Jiateng Liu" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;">
+                        </div>
+                        <div>
+                            <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Jiateng Liu</strong>
+                            <span style="color: #546e7a; font-size: 1rem; display: block;">University of Illinois at Urbana-Champaign</span>
+                        </div>
                     </div>
                 </div>
             </div>
