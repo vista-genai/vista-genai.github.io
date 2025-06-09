@@ -1022,32 +1022,16 @@
 
         /* Special layout for organizers section */
         #organizers .speakers-grid-container {
-            display: block;
-            text-align: center;
-        }
-
-        /* First row with 3 people */
-        #organizers .first-row,
-        #organizers .second-row {
             display: flex;
             justify-content: center;
-            margin: 0 auto;
             flex-wrap: wrap;
+            gap: 2rem 1rem;
         }
 
         #organizers .speaker-item {
-            margin: 0 1.5%;
-            width: 30%;
+            width: calc(33.333% - 2rem);
             max-width: 250px;
-        }
-
-        #organizers .second-row {
-            margin-top: 3rem;
-        }
-
-        #organizers .second-row .speaker-item {
-            width: 30%;
-            max-width: 250px;
+            margin-bottom: 2rem;
         }
 
         /* Speakers Grid - 增强文字可见性 */
@@ -1487,69 +1471,65 @@
                 <div class="speakers-container">
                     <h3 class="speakers-grid-title">Organizers</h3>
                     <div class="speakers-grid-container">
-                        <div class="first-row">
-                            <div class="speaker-item">
-                                <a href="https://zhangdenghui.site/" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/zdh.jpg" alt="Denghui Zhang">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Denghui Zhang</div>
-                                <!-- <div class="speaker-role">General Chair</div> -->
-                                <div class="speaker-institution">Stevens Institute of Technology</div>
-                            </div>
-                            <div class="speaker-item">
-                                <a href="https://ottovonxu.github.io/" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/zhaozhuo.jpg" alt="Zhaozhuo Xu">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Zhaozhuo Xu</div>
-                                <!-- <div class="speaker-role">Program Chair</div> -->
-                                <div class="speaker-institution">Stevens Institute of Technology</div>
-                            </div>
-                            <div class="speaker-item">
-                                <a href="https://eaglew.github.io/" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/qingyun.jpg" alt="Qingyun Wang">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Qingyun Wang</div>
-                                <!-- <div class="speaker-role">Local Chair</div> -->
-                                <div class="speaker-institution">College of William & Mary</div>
-                            </div>
+                        <div class="speaker-item">
+                            <a href="https://zhangdenghui.site/" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/zdh.jpg" alt="Denghui Zhang">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Denghui Zhang</div>
+                            <!-- <div class="speaker-role">General Chair</div> -->
+                            <div class="speaker-institution">Stevens Institute of Technology</div>
                         </div>
-                        <div class="second-row">
-                            <div class="speaker-item">
-                                <a href="https://www.linkedin.com/in/jimin-huang-239abb261/?locale=en_US" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/jiminhuang.jpeg" alt="Jimin Huang">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Jimin Huang</div>
-                                <!-- <div class="speaker-role">Publicity Chair</div> -->
-                                <div class="speaker-institution">The Fin AI</div>
-                            </div>
-                            <div class="speaker-item">
-                                <a href="https://engineering.purdue.edu/~jinggao/" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/jinggao.jpg" alt="Jing Gao">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Jing Gao</div>
-                                <!-- <div class="speaker-role">General Chair</div> -->
-                                <div class="speaker-institution">Purdue University</div>
-                            </div>
-                            <div class="speaker-item">
-                                <a href="https://www.linkedin.com/in/yide-ran-4b392a332/" target="_blank" onclick="event.stopPropagation();">
-                                    <div class="speaker-avatar">
-                                        <img src="./images/yideran.jpg" alt="Yide Ran">
-                                    </div>
-                                </a>
-                                <div class="speaker-name">Yide Ran</div>
-                                <!-- <div class="speaker-role">Web Chair</div> -->
-                                <div class="speaker-institution">Stevens Institute of Technology</div>
-                            </div>
+                        <div class="speaker-item">
+                            <a href="https://ottovonxu.github.io/" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/zhaozhuo.jpg" alt="Zhaozhuo Xu">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Zhaozhuo Xu</div>
+                            <!-- <div class="speaker-role">Program Chair</div> -->
+                            <div class="speaker-institution">Stevens Institute of Technology</div>
+                        </div>
+                        <div class="speaker-item">
+                            <a href="https://eaglew.github.io/" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/qingyun.jpg" alt="Qingyun Wang">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Qingyun Wang</div>
+                            <!-- <div class="speaker-role">Local Chair</div> -->
+                            <div class="speaker-institution">College of William & Mary</div>
+                        </div>
+                        <div class="speaker-item">
+                            <a href="https://www.linkedin.com/in/jimin-huang-239abb261/?locale=en_US" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/jiminhuang.jpeg" alt="Jimin Huang">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Jimin Huang</div>
+                            <!-- <div class="speaker-role">Publicity Chair</div> -->
+                            <div class="speaker-institution">The Fin AI</div>
+                        </div>
+                        <div class="speaker-item">
+                            <a href="https://engineering.purdue.edu/~jinggao/" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/jinggao.jpg" alt="Jing Gao">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Jing Gao</div>
+                            <!-- <div class="speaker-role">General Chair</div> -->
+                            <div class="speaker-institution">Purdue University</div>
+                        </div>
+                        <div class="speaker-item">
+                            <a href="https://www.linkedin.com/in/yide-ran-4b392a332/" target="_blank" onclick="event.stopPropagation();">
+                                <div class="speaker-avatar">
+                                    <img src="./images/yideran.jpg" alt="Yide Ran">
+                                </div>
+                            </a>
+                            <div class="speaker-name">Yide Ran</div>
+                            <!-- <div class="speaker-role">Web Chair</div> -->
+                            <div class="speaker-institution">Stevens Institute of Technology</div>
                         </div>
                     </div>
                 </div>
