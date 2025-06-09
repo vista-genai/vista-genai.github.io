@@ -657,6 +657,13 @@
                 gap: 2rem;
             }
 
+            /* Organizers: 2x3 layout on tablets */
+            #organizers .speakers-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                max-width: 600px;
+            }
+
             /* Plans to Attract Quality Submissions - 平板保持2x2 */
             #attractions > div {
                 grid-template-columns: repeat(2, 1fr);
@@ -681,21 +688,31 @@
             .section-title {
                 font-size: 2rem;
             }
-
-            #organizers .speaker-item {
-                width: 45%;
-                margin: 0 2.5% 2rem;
-            }
             
+            /* Force single column layout for speakers and organizers on mobile */
             .speakers-grid-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                max-width: 300px !important;
+                margin: 0 auto !important;
+            }
+
+            #organizers .speakers-grid-container {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                max-width: 300px !important;
+                margin: 0 auto !important;
+            }
+
+            .speaker-item {
+                max-width: 220px !important;
+                margin: 0 auto !important;
             }
             
             .speaker-avatar {
-                width: 140px;
-                height: 140px;
-                font-size: 3.5rem;
+                width: 160px !important;
+                height: 160px !important;
+                font-size: 4rem !important;
             }
             
             .speakers-grid-title {
@@ -728,20 +745,30 @@
                 font-size: 1rem;
             }
 
-            #organizers .speaker-item {
-                width: 80%;
-                margin: 0 auto 2rem;
-            }
-            
+            /* Force even smaller layout for very small screens */
             .speakers-grid-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                max-width: 280px !important;
+                margin: 0 auto !important;
+            }
+
+            #organizers .speakers-grid-container {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                max-width: 280px !important;
+                margin: 0 auto !important;
+            }
+
+            .speaker-item {
+                max-width: 200px !important;
+                margin: 0 auto !important;
             }
             
             .speaker-avatar {
-                width: 140px;
-                height: 140px;
-                font-size: 3.5rem;
+                width: 140px !important;
+                height: 140px !important;
+                font-size: 3.5rem !important;
             }
 
             #attractions > div {
@@ -964,7 +991,6 @@
             font-size: 1.2rem;
         }
 
-        /* Delete old unused styles */
         /* Speakers Grid - CVPR风格 */
         .speakers-grid {
             background: transparent;
@@ -980,18 +1006,29 @@
             z-index: 1;
         }
 
+        /* Default speakers grid - for 4 speakers */
         .speakers-grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
             justify-items: center;
             align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Organizers grid - for 6 organizers */
+        #organizers .speakers-grid-container {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 900px;
         }
 
         .speaker-item {
             text-align: center;
             width: 100%;
-            max-width: 250px;
+            max-width: 220px;
+            margin: 0 auto;
         }
 
         .speaker-avatar img {
@@ -1009,29 +1046,6 @@
         /* Special positioning for Denghui Zhang's photo */
         .speaker-avatar img[alt="Denghui Zhang"] {
             object-position: center 2%;
-        }
-
-        /* Ensure even distribution for different numbers of items */
-        .speakers-grid-container:has(.speaker-item:nth-child(4):last-child) {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .speakers-grid-container:has(.speaker-item:nth-child(5):last-child) {
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-        /* Special layout for organizers section */
-        #organizers .speakers-grid-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem 1rem;
-        }
-
-        #organizers .speaker-item {
-            width: calc(33.333% - 2rem);
-            max-width: 250px;
-            margin-bottom: 2rem;
         }
 
         /* Speakers Grid - 增强文字可见性 */
