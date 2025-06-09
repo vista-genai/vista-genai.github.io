@@ -297,6 +297,80 @@
             margin-right: 5px;
         }
 
+        /* Schedule Table Styles */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-table th {
+            background: linear-gradient(135deg, #64b5f6, #42a5f5);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .schedule-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background: rgba(100, 181, 246, 0.05);
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(100, 181, 246, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .time-slot {
+            font-weight: 700;
+            color: #1a237e;
+            font-size: 1rem;
+            min-width: 120px;
+            white-space: nowrap;
+        }
+
+        .event-detail {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .event-detail em {
+            color: #2196f3;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .keynote-speaker {
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        .break-event {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        .industry-event {
+            color: #4caf50;
+            font-weight: 600;
+        }
+
         /* Grid layouts */
         .grid-container {
             display: grid;
@@ -1148,8 +1222,9 @@
             <li><a href="#submission">Submission Details</a></li>
             <!-- <li><a href="#attractions">Quality Submissions</a></li> -->
             <li><a href="#speakers">Invited Speakers</a></li>
+            <li><a href="#schedule">Workshop Schedule</a></li>
             <li><a href="#organizers">Organizers</a></li>
-            <li><a href="#committee">Program Committee</a></li>
+            <!-- <li><a href="#committee">Program Committee</a></li> -->
         </ul>
     </nav>
     
@@ -1358,6 +1433,67 @@
             </div>
         </section>
 
+        <!-- Schedule Section -->
+        <section id="schedule">
+                <h2 class="section-title">Workshop Schedule</h2>
+                <div class="card">
+                    <!-- <p class="content-text">
+                        The workshop will be held on <strong>November 12, 2025</strong> in Washington DC as part of ICDM 2025. Below is the detailed schedule for the day:
+                    </p> -->
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th class="time-slot">Time</th>
+                                <th class="event-detail">Event</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-slot">9:30–9:40</td>
+                                <td class="event-detail">Opening Remarks</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">9:40–10:20</td>
+                                <td class="event-detail"><em>Keynote:</em> <span class="keynote-speaker">Jing Gao</span>, Associate Professor at Purdue University</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">10:20–11:00</td>
+                                <td class="event-detail"><em>GenAI Technology Keynote:</em> <span class="keynote-speaker">Vladimir Braverman</span>, Professor at Johns Hopkins University</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">11:00–11:40</td>
+                                <td class="event-detail"><em>GenAI Standard Keynote:</em> <span class="keynote-speaker">David Atkinson, J.D.</span>, Lecturer at UT Austin</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">11:40–12:10</td>
+                                <td class="event-detail"><em>GenAI Technology Keynote:</em> <span class="keynote-speaker">Ang Li</span>, Assistant Professor at University of Maryland</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">12:10–13:30</td>
+                                <td class="event-detail"><span class="break-event">Lunch Break</span></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">13:30–14:00</td>
+                                <td class="event-detail"><em>Industry Showcase:</em> <span class="keynote-speaker">Jimin Huang</span> from Fin AI</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">14:00–14:30</td>
+                                <td class="event-detail"><strong>Roundtable:</strong> Perspective White Paper Discussion</td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">14:30–16:00</td>
+                                <td class="event-detail"><strong>Poster Session</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- <p class="content-text" style="margin-top: 2rem;">
+                        The workshop features a diverse program including keynote presentations from leading experts in GenAI technology and standards, an industry showcase highlighting real-world applications, and interactive sessions for in-depth discussions. The poster session will provide opportunities for attendees to present their research and engage in collaborative discussions.
+                    </p> -->
+                </div>
+        </section>
+
         <!-- Organizers Section -->
         <section id="organizers">
             <div class="speakers-grid">
@@ -1433,130 +1569,18 @@
             </div>
         </section>
 
-        <!-- Program Committee Section -->
-        <section id="committee">
-            <h2 class="section-title">Tentative Program Committee</h2>
-
-            <!-- Committee Members -->
-            <div class="committee-members">
-                
-                <div class="committee-grid">
-                    <!-- David Atkinson - Entire card is clickable -->
-                    <a href="https://www.linkedin.com/in/daa780/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/davidatkin.jpeg" alt="David Atkinson" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">David Atkinson</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">University of Texas at Austin</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <!-- Boyi Wei - Entire card is clickable -->
-                    <a href="https://boyiwei.com/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/boyi.png" alt="Boyi Wei" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Boyi Wei</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">Princeton University</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <!-- Tianfu Fu - Entire card is clickable -->
-                    <a href="https://www.linkedin.com/in/tianfu-fu-6453ba193/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/futianfu.jpg" alt="Tianfu Fu" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Tianfu Fu</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">OpenAI</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <!-- Jialiang Xu - Entire card is clickable -->
-                    <a href="https://liamjxu.github.io/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/jialiangxu.jpg" alt="Jialiang Xu" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Jialiang Xu</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">Stanford University</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <!-- Yanzhou Pan - Entire card is clickable -->
-                    <a href="https://www.linkedin.com/in/yanzhou-pan/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/yanzhoupan.jpeg" alt="Yanzhou Pan" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Yanzhou Pan</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">Google</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <!-- Jiateng Liu - Entire card is clickable -->
-                    <a href="https://lumos-jiateng.github.io/" target="_blank" style="text-decoration: none; display: block; cursor: pointer;">
-                        <div style="background: white; border-left: 5px solid #3a7bd5; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease;" 
-                            onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 8px 30px rgba(58, 123, 213, 0.3)'; this.style.borderLeftColor='#00d2ff'; this.querySelector('.member-photo').style.borderColor='#00d2ff'; this.querySelector('.member-photo').style.transform='scale(1.05)';" 
-                            onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 5px 20px rgba(0, 0, 0, 0.08)'; this.style.borderLeftColor='#3a7bd5'; this.querySelector('.member-photo').style.borderColor='#e0e0e0'; this.querySelector('.member-photo').style.transform='scale(1)';">
-                            
-                            <div class="member-photo" style="width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0; border: 3px solid #e0e0e0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
-                                <img src="./images/jiateng liu.jpg" alt="Jiateng Liu" style="width: 100%; height: 100%; object-fit: cover; object-position: center 35%;">
-                            </div>
-                            
-                            <div>
-                                <strong style="color: #1a237e; font-size: 1.2rem; display: block; margin-bottom: 6px;">Jiateng Liu</strong>
-                                <span style="color: #546e7a; font-size: 1rem; display: block;">University of Illinois at Urbana-Champaign</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>© 2025 VISTA Workshop. All rights reserved.</p>
-            <div class="social-links">
+            <!-- <div class="social-links">
                 <a href="#">📧</a>
                 <a href="#">🐦</a>
                 <a href="#">💼</a>
                 <a href="#">📘</a>
-            </div>
+            </div> -->
         </div>
     </footer>
 
@@ -1633,14 +1657,10 @@
             });
         });
         
-        // 修复speaker头像链接问题
         document.querySelectorAll('.speaker-item a').forEach(link => {
             link.addEventListener('click', function(e) {
-                // 阻止事件冒泡以避免可能的事件干扰
                 e.stopPropagation();
-                // 用新窗口打开链接而非在当前窗口
                 window.open(this.href, '_blank');
-                // 阻止默认行为以防止影响页面状态
                 e.preventDefault();
             });
         });
