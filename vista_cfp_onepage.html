@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISTA Workshop @ ICDM 2025</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 10pt; /* Increased base font */
+            line-height: 1.25; /* Adjusted line height */
+            color: #e0e0e0;
+            background-color: #121212;
+        }
+        .container {
+            width: 8.27in;
+            height: 11.69in;
+            margin: 0 auto;
+            position: relative;
+            padding: 0.2in;
+            box-sizing: border-box;
+            background-color: #121212;
+            background-image: linear-gradient(rgba(25, 32, 72, 0.6), rgba(15, 15, 30, 0.6));
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            padding: 0 20px 3px;
+            border-bottom: 1px solid #3498db;
+        }
+        .header-center {
+            flex: 1;
+            text-align: center;
+        }
+        .header-title {
+            font-size: 22pt; /* Increased font size */
+            font-weight: bold;
+            color: #3498db;
+        }
+        .header-url {
+            font-size: 11pt; /* Increased font size */
+        }
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+        }
+        .section-header {
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            margin: 6px 0 4px 0; /* adjusted margin */
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12pt; /* Increased font size */
+        }
+        .columns {
+            display: flex;
+            gap: 15px;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .topics li, .submission li, .dates li {
+            margin-bottom: 2px;
+        }
+        .committee-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 9pt; /* Increased font size */
+            text-align: center;
+        }
+        .committee-list li {
+            margin-bottom: 2px;
+        }
+        .speakers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .speaker-img {
+            width: 98px; /* larger speaker img */
+            height: 98px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #3498db;
+        }
+        .speaker-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .speaker-name {
+            font-weight: bold;
+            margin-top: 4px;
+            font-size: 9pt; /* Increased font size */
+            color: #e0e0e0;
+        }
+        .speaker-affiliation {
+            font-size: 8pt; /* Increased font size */
+            color: #a0a0a0;
+            line-height: 1.1;
+        }
+        .organizers {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        .organizer-img {
+            width: 75px; /* larger organizer img */
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 2px solid #3498db;
+        }
+        .organizer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Special positioning for Jing Gao's photo */
+        .organizer-img img[alt="Jing Gao"] {
+            object-position: center 20%;
+        }
+        .organizer-name {
+            font-weight: bold;
+            margin-top: 3px;
+            font-size: 8pt; /* Increased font size */
+            color: #e0e0e0;
+        }
+        .organizer-affiliation {
+            font-size: 8pt; /* Increased font size */
+            color: #a0a0a0;
+            line-height: 1.1;
+        }
+        p {
+            margin: 0;
+            text-align: justify;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: rgba(15, 25, 45, 0.7);
+            border-radius: 6px;
+            padding: 6px 12px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(52, 152, 219, 0.4);
+        }
+        .column .card {
+            flex-grow: 1;
+        }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .schedule-table {
+            width: 100%;
+            font-size: 8pt;
+        }
+        .schedule-table td {
+            padding: 2.5px 2px;
+        }
+        .schedule-table td:first-child {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="images/icdm_logo1.jpg" alt="VISTA Logo" class="header-logo">
+            <div class="header-center">
+                <div class="header-title">VISTA Workshop @ ICDM 2025</div>
+                <div class="header-url"><a href="https://vista-genai.github.io/">https://vista-genai.github.io/</a></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="images/icdm_logo2.jpg" alt="ICDM Logo" class="header-logo">
+                <div style="text-align: center;">
+                    <div style="font-size: 8pt; color: #e0e0e0; font-weight: bold; margin-bottom: 2px;">Scan to Submit</div>
+                    <div id="header-qrcode" style="background: white; padding: 4px; border-radius: 4px; display: inline-block;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="columns">
+                <div class="column">
+                    <div class="section-header">Call for Papers</div>
+                    <div class="card">
+                        <p>
+                            Generative AI (GenAI) models, including large language models (LLMs) and diffusion models, are reshaping industries by automating content creation, enhancing decision-making, and enabling new forms of user interaction. However, their widespread adoption presents challenges in both technology and standards. How these new technologies perform with legal compliance and respect to common sense remains to be explored. This workshop brings together researchers and practitioners to explore the interaction of advanced GenAI technology and evolving corresponding standards. It aims to foster discussions on future innovations of GenAI in a regulated landscape.
+                        </p>
+                        <p style="font-weight: bold; text-align: left; margin-top: 8px; margin-bottom: 3px;">Topics of interest include but are not limited to:</p>
+                        <ul class="topics" style="margin-top: 0px; padding-left: 20px;">
+                            <li>New GenAI models with legal considerations</li>
+                            <li>Novel GenAI training and inference with legal compliance</li>
+                            <li>Efficient GenAI model customization with regulations</li>
+                            <li>Analysis of data influence on GenAI models' behaviors</li>
+                            <li>Copyright challenges in GenAI (detection, mitigation)</li>
+                            <li>Machine unlearning of GenAI models for legal compliance</li>
+                            <li>Implementations of GenAI standards in applications</li>
+                            <li>Case studies of legal challenges in GenAI applications</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="section-header">Submission Guidelines</div>
+                    <div class="card">
+                        <ul class="submission">
+                            <li><strong>Paper length:</strong> Up to 4 pages (excluding references and appendices)</li>
+                            <li><strong>Format:</strong> IEEE Conference Template</li>
+                            <li><strong>Review:</strong> Double-blind review process</li>
+                            <li><strong>Publication:</strong> Accepted paper will be indexed in Ei (Engineering Index)</li>
+                        </ul>
+                        <div style="text-align: center; margin-top: 8px;">
+                            <span style="font-size: 10pt; color: #e0e0e0; font-weight: bold; margin-right: 8px;">Submit your paper:</span>
+                            <a href="https://wi-lab.com/cyberchair/2025/icdm25/scripts/submit.php?subarea=S44&undisplay_detail=1&wh=/cyberchair/2025/icdm25/scripts/ws_submit.php" 
+                               target="_blank" 
+                               style="color: #64b5f6; text-decoration: underline; font-size: 10pt;">
+                                Paper Submission Link
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="section-header">Call for Program Committee</div>
+                    <div class="card">
+                        <p style="text-align: justify;">If you are interested in contributing to our paper review process, please contact us at <a href="mailto:vistagenai@gmail.com">vistagenai@gmail.com</a>. We will publicly acknowledge our program committee members. Your expertise and time dedicated to this effort are greatly appreciated and crucial to the success of the workshop.</p>
+                    </div>
+    
+                    <div class="section-header">Important Dates</div>
+                    <div class="card">
+                        <ul class="dates">
+                            <li><strong>Submission:</strong> Aug 29, 2025</li>
+                            <li><strong>Notification:</strong> Sep 15, 2025</li>
+                            <li><strong>Camera-ready:</strong> Sep 25, 2025</li>
+                            <li><strong>Workshop:</strong> Nov 12, 2025</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Invited Speakers -->
+            <div class="section-header">Invited Speakers</div>
+            <div class="card">
+                <div class="speakers">
+                    <div class="speaker">
+                        <div class="speaker-img">
+                            <img src="images/Braverman.jpg" alt="Vladimir Braverman">
+                        </div>
+                        <div class="speaker-name">Vladimir Braverman</div>
+                        <div class="speaker-affiliation">Johns Hopkins</div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img">
+                            <img src="images/davidatkin.jpeg" alt="David Atkinson">
+                        </div>
+                        <div class="speaker-name">David Atkinson, J.D.</div>
+                        <div class="speaker-affiliation">University of Texas at Austin</div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img">
+                            <img src="images/ang.jpg" alt="Ang Li">
+                        </div>
+                        <div class="speaker-name">Ang Li</div>
+                        <div class="speaker-affiliation">University of Maryland</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Organizers -->
+            <div class="section-header">Organizers</div>
+            <div class="card">
+                <div class="organizers">
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/zdh.jpg" alt="Denghui Zhang">
+                        </div>
+                        <div class="organizer-name">Denghui Zhang</div>
+                        <div class="organizer-affiliation">Stevens Institute of Technology</div>
+                    </div>
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/zhaozhuo.jpg" alt="Zhaozhuo Xu">
+                        </div>
+                        <div class="organizer-name">Zhaozhuo Xu</div>
+                        <div class="organizer-affiliation">Stevens Institute of Technology</div>
+                    </div>
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/qingyun.jpg" alt="Qingyun Wang">
+                        </div>
+                        <div class="organizer-name">Qingyun Wang</div>
+                        <div class="organizer-affiliation">William & Mary</div>
+                    </div>
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/jiminhuang.jpeg" alt="Jimin Huang">
+                        </div>
+                        <div class="organizer-name">Jimin Huang</div>
+                        <div class="organizer-affiliation">The Fin AI</div>
+                    </div>
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/jinggao.jpg" alt="Jing Gao">
+                        </div>
+                        <div class="organizer-name">Jing Gao</div>
+                        <div class="organizer-affiliation">Purdue University</div>
+                    </div>
+                    <div class="organizer">
+                        <div class="organizer-img">
+                            <img src="images/yideran.jpg" alt="Yide Ran">
+                        </div>
+                        <div class="organizer-name">Yide Ran</div>
+                        <div class="organizer-affiliation">Stevens Institute of Technology</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        new QRCode(document.getElementById("header-qrcode"), {
+            text: "https://wi-lab.com/cyberchair/2025/icdm25/scripts/submit.php?subarea=S44&undisplay_detail=1&wh=/cyberchair/2025/icdm25/scripts/ws_submit.php",
+            width: 72,
+            height: 72,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    </script>
+</body>
+</html> 
